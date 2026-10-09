@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+<section class="intro">
+  <h1>Hi, I'm Jeff.</h1>
+  <p>{{ site.tagline }} More <a href="/about/">about me</a>.</p>
+</section>
+
+<section>
+  <h2 class="section-label">Writing</h2>
+  <ul class="post-list">
+    {%- for post in collections.posts | reverse %}
+    <li>
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+      {%- if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

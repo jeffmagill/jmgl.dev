@@ -1,0 +1,176 @@
+/* ---------- Tokens ---------- */
+:root {
+  --bg: #fdfcfa;
+  --text: #1f2328;
+  --muted: #5f6670;
+  --rule: #e4e1db;
+  --accent: #1f6feb;
+  --accent-soft: #e8f0fe;
+  --code-bg: #f3f1ec;
+  --mark: #fff2a8;
+  --measure: 40rem;
+  --font-body: ui-serif, Charter, "Bitstream Charter", Georgia, Cambria, serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --text: #e6e3dc;
+    --muted: #9aa0a8;
+    --rule: #2c3036;
+    --accent: #6ea8fe;
+    --accent-soft: #1d2a3d;
+    --code-bg: #1e2125;
+    --mark: #5c4f12;
+  }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  max-width: calc(var(--measure) + 2rem);
+  padding: 0 1rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 1.125rem/1.7 var(--font-body);
+}
+
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* ---------- Header / footer ---------- */
+.site-header, .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+}
+.site-header { padding: 2rem 0 3rem; }
+.site-title { font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+.site-header nav { display: flex; gap: 1.25rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; }
+.site-header nav a[aria-current="page"], .site-header nav a:hover { color: var(--text); }
+
+.site-footer {
+  margin-top: 5rem;
+  padding: 1.5rem 0 3rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.site-footer a { color: var(--muted); }
+
+/* ---------- Home ---------- */
+.intro h1 { font: 700 2.25rem/1.15 var(--font-ui); letter-spacing: -0.02em; margin: 0 0 0.5rem; }
+.intro p { color: var(--muted); margin: 0 0 3rem; }
+
+.section-label {
+  font: 600 0.8rem/1 var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { padding: 1rem 0; border-top: 1px solid var(--rule); }
+.post-list li > a { font: 600 1.15rem/1.35 var(--font-ui); text-decoration: none; color: var(--text); }
+.post-list li > a:hover { color: var(--accent); }
+.post-list time { display: block; font: 0.85rem var(--font-ui); color: var(--muted); margin-top: 0.15rem; }
+.post-list p { margin: 0.35rem 0 0; font-size: 1rem; color: var(--muted); }
+
+/* ---------- Post ---------- */
+.post-header h1 { font: 700 2.25rem/1.15 var(--font-ui); letter-spacing: -0.02em; margin: 0 0 0.5rem; }
+.post-meta { font: 0.9rem var(--font-ui); color: var(--muted); margin: 0 0 2.5rem; }
+.draft-badge { color: #c2410c; }
+.post-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 1rem; color: var(--muted); }
+
+/* ---------- Prose ---------- */
+.prose > :first-child { margin-top: 0; }
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-ui);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 2.5rem 0 0.75rem;
+}
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.5rem; }
+.prose h3 { font-size: 1.2rem; }
+.prose h4 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+.prose h2 a, .prose h3 a, .prose h4 a { color: inherit; text-decoration: none; }
+.prose h2 a:hover::after, .prose h3 a:hover::after, .prose h4 a:hover::after {
+  content: " #"; color: var(--muted); font-weight: 400;
+}
+
+.prose p, .prose ul, .prose ol, .prose blockquote, .prose table, .prose pre, .prose figure, .prose details { margin: 0 0 1.4rem; }
+.prose li { margin: 0.25rem 0; }
+.prose li > ul, .prose li > ol { margin: 0.25rem 0 0; }
+.prose .task-list-item { list-style: none; margin-left: -1.4em; }
+.prose .task-list-item-checkbox { margin-right: 0.5em; }
+
+.prose blockquote {
+  margin-left: 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+  font-style: italic;
+}
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+.callout {
+  display: block;
+  margin: 0 0 1.4rem;
+  padding: 1rem 1.25rem;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  font-size: 1.05rem;
+}
+
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+.prose mark { background: var(--mark); color: inherit; padding: 0 0.15em; border-radius: 2px; }
+.prose kbd {
+  font: 0.8em var(--font-mono);
+  padding: 0.1em 0.4em;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--code-bg);
+}
+
+.prose code { font-family: var(--font-mono); font-size: 0.88em; }
+.prose :not(pre) > code { background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px; }
+.prose pre {
+  overflow-x: auto;
+  padding: 1rem 1.15rem;
+  background: var(--code-bg);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.prose table { width: 100%; border-collapse: collapse; font: 0.95rem var(--font-ui); display: block; overflow-x: auto; }
+.prose th, .prose td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--rule); }
+.prose th { font-weight: 600; border-bottom-width: 2px; }
+
+.prose img, .prose svg { max-width: 100%; height: auto; }
+.prose figure { margin-left: 0; margin-right: 0; }
+.prose figcaption { margin-top: 0.5rem; font: 0.85rem var(--font-ui); color: var(--muted); text-align: center; }
+
+.prose details { border: 1px solid var(--rule); border-radius: 6px; padding: 0.75rem 1rem; }
+.prose summary { cursor: pointer; font-family: var(--font-ui); font-weight: 600; }
+.prose details[open] summary { margin-bottom: 0.75rem; }
+
+.prose .footnotes { font-size: 0.95rem; color: var(--muted); }
+.prose .footnotes-sep { margin-top: 3rem; }
+.prose .footnote-ref a { text-decoration: none; }
