@@ -41,7 +41,8 @@ One-time setup: **Settings → Pages → Build and deployment → Source: GitHub
 src/
   _data/site.json          site title, tagline, social links
   _includes/layouts/       base.njk (page shell), post.njk (post template)
-  css/                     style.css, prism.css (code highlighting)
+  css/                     style.css (tokens, colors, layout), prism.css (code highlighting)
+  fonts/                   Bricolage Grotesque (display), Instrument Sans (body), self-hosted
   posts/                   blog posts (Markdown)
   index.njk                home page / post list
   about.md                 About page

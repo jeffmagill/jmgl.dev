@@ -2,19 +2,18 @@
 layout: layouts/base.njk
 ---
 <section class="intro">
-  <h1>Hi, I'm Jeff.</h1>
-  <p>{{ site.tagline }} More <a href="/about/">about me</a>.</p>
+  <h1>Hi, I'm <span class="scribble">Jeff.<svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8.5C20 4 45 2.2 64 4.6c14 1.8 22 4.2 33 1.4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span></h1>
+  <p>{{ site.tagline }} I write about what I've built, what broke, and what I'd do differently.</p>
+  <a class="status" href="/about/">Open to engineering leadership roles</a>
 </section>
 
-<section>
-  <h2 class="section-label">Writing</h2>
-  <ul class="post-list">
-    {%- for post in collections.posts | reverse %}
-    <li>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
-      {%- if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
-    </li>
-    {%- endfor %}
-  </ul>
-</section>
+<h2 class="section-label">Writing</h2>
+<ul class="post-list">
+  {%- for post in collections.posts | reverse %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+    {%- if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+  </li>
+  {%- endfor %}
+</ul>
