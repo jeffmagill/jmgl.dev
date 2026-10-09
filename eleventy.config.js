@@ -9,6 +9,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/fonts");
 
   // --- Drafts: `draft: true` in front matter shows locally, never in the live build ---
   eleventyConfig.addPreprocessor("drafts", "*", (data) => {
